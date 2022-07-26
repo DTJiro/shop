@@ -9,67 +9,53 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>竹子商铺</title>
-		<link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="${pageContext.request.contextPath }/css/style1.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="${pageContext.request.contextPath }/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="${pageContext.request.contextPath }/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-		<!-- //Custom Theme files -->
-		<!-- font-awesome icons -->
-		<link href="${pageContext.request.contextPath }/css/font-awesome.css" rel="stylesheet"> 
-		<!-- //font-awesome icons -->
-		<!-- js -->
-		<script src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/jquery.countdown.css" /> <!-- countdown --> 
-		<!-- //js -->  
-		<!-- web fonts --> 
-		<link href='http://fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts -->  
-<!-- start-smooth-scrolling -->
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
-<!-- //end-smooth-scrolling --> 
-</head>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
+		<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
+	</head>
 
 	<body>
 		<div class="container-fluid">
 
 			<%@include file="/jsp/head.jsp" %>
 
+			<!--
+            	作者：ci2713@163.com
+            	时间：2015-12-30
+            	描述：轮播条
+            -->
 			<div class="container-fluid">
 				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 					</ol>
 
+					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="${pageContext.request.contextPath}/img/11.jpg" width="100%">
-							<div class="carousel-caption">
-							</div>
-						</div>
-						<div class="item">
-							<img src="${pageContext.request.contextPath}/img/12.jpg" width="100%">
+							<img src="${pageContext.request.contextPath}/img/1.jpg" width="100%">
 							<div class="carousel-caption">
 
 							</div>
 						</div>
 						<div class="item">
-							<img src="${pageContext.request.contextPath}/img/13.jpg" width="100%">
+							<img src="${pageContext.request.contextPath}/img/2.jpg" width="100%">
+							<div class="carousel-caption">
+
+							</div>
+						</div>
+						<div class="item">
+							<img src="${pageContext.request.contextPath}/img/3.jpg" width="100%">
 							<div class="carousel-caption">
 
 							</div>
 						</div>
 					</div>
 
+					<!-- Controls -->
 					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 						<span class="sr-only">Previous</span>
@@ -80,6 +66,11 @@
 					</a>
 				</div>
 			</div>
+			<!--
+            	作者：ci2713@163.com
+            	时间：2015-12-30
+            	描述：商品显示
+            -->
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<h2>最新商品&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/img/title2.jpg"/></h2>
@@ -88,7 +79,11 @@
 					<img src="${pageContext.request.contextPath}/products/hao/big.jpg" height="400" style="display: inline-block;"/>
 				</div>
 				<div class="col-md-10">
-
+					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
+						<a href="product_info.htm">
+							<img src="${pageContext.request.contextPath}/products/hao/middle01.jpg" width="516px" height="200px" style="display: inline-block;">
+						</a>
+					</div>
 
 					<c:forEach items="${nList }" var="p">
 						<div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
@@ -101,10 +96,19 @@
 					</c:forEach>				
 				</div>
 			</div>			
+			<!--
+            	作者：ci2713@163.com
+            	时间：2015-12-30
+            	描述：广告部分
+            -->
             <div class="container-fluid">
 				<img src="${pageContext.request.contextPath}/products/hao/ad.jpg" width="100%"/>
 			</div>
-
+			<!--
+            	作者：ci2713@163.com
+            	时间：2015-12-30
+            	描述：商品显示
+            -->
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<h2>热门商品&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/img/title2.jpg"/></h2>
@@ -113,7 +117,11 @@
 					<img src="${pageContext.request.contextPath}/products/hao/big1.jpg" width="270" style="display: inline-block;"/>
 				</div>
 				<div class="col-md-10">
-
+					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
+						<a href="product_info.htm">
+							<img src="${pageContext.request.contextPath}/products/hao/middle01.jpg" width="516px" height="200px" style="display: inline-block;">
+						</a>
+					</div>
 					<c:forEach items="${hList }" var="p">
 						<div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
 							<a href="${pageContext.request.contextPath }/product?method=getById&pid=${p.pid}">
@@ -125,6 +133,20 @@
 					</c:forEach>
 				</div>
 			</div>			
+			<!--
+            	作者：ci2713@163.com
+            	时间：2015-12-30
+            	描述：页脚部分
+            -->
+			<div class="container-fluid">
+				<div style="margin-top:50px;">
+					<img src="${pageContext.request.contextPath}/img/footer.jpg" width="100%" alt="我们的优势" title="我们的优势" />
+				</div>
+
+				<div style="text-align: center;margin-top: 5px;margin-bottom:20px;">
+					Copyright &copy; DT 版权所有
+				</div>
+			</div>
 		</div>
 	</body>
 

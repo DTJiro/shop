@@ -164,7 +164,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminServlet</servlet-name>
-    <url-pattern>/admin</url-pattern>
+    <url-pattern>/Admin</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

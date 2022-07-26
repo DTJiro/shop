@@ -12,6 +12,8 @@ import com.bamboo.utils.DataSourceUtils;
 
 public class OrderServiceImpl implements OrderService {
 
+	OrderDao od  =new OrderDaoImpl();
+	
 	@Override
 	/**
 	 * 保存订单
@@ -19,7 +21,6 @@ public class OrderServiceImpl implements OrderService {
 	public void save(Order order) throws Exception{
 		try {
 			//获取dao
-			OrderDao od  =new OrderDaoImpl();
 			//1.开启事务
 			DataSourceUtils.startTransaction();
 			
@@ -45,8 +46,7 @@ public class OrderServiceImpl implements OrderService {
 	 * 我的订单
 	 */
 	public PageBean<Order> findMyOrdersByPage(int pageNumber, int pageSize, int uid) throws Exception {
-		OrderDao od  =new OrderDaoImpl();
-		
+	
 		//1.创建pagebean
 		PageBean<Order> pb = new PageBean<>(pageNumber, pageSize);
 		
@@ -65,7 +65,6 @@ public class OrderServiceImpl implements OrderService {
 	 * 订单详情
 	 */
 	public Order getById(String oid) throws Exception {
-		OrderDao od = new OrderDaoImpl();
 		return od.getById(oid);
 	}
 
@@ -74,7 +73,6 @@ public class OrderServiceImpl implements OrderService {
 	 * 修改订单
 	 */
 	public void update(Order order) throws Exception {
-		OrderDao od = new OrderDaoImpl();
 		od.update(order);
 	}
 
@@ -83,8 +81,6 @@ public class OrderServiceImpl implements OrderService {
 	 * 后台查询订单列表
 	 */
 	public List<Order> findAllByState(String state) throws Exception {
-
-		OrderDao od = new OrderDaoImpl();
 		return od.findAllByState(state);
 	}
 

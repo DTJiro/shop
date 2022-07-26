@@ -30,17 +30,15 @@ public class AdminServlet extends BaseServlet {
 			//3.判断admin 根据结果生成提示
 			if(admin == null){
 				//用户名和密码不匹配
-				System.out.println("验证失败！");
-				response.setContentType("text/html;charset=utf-8");
-				response.getWriter().println("<script>alert('用户名和密码不匹配！');history.go(-1);</script>");
+				request.setAttribute("msg", "用户名和密码不匹配");;
+				return "/admin/login.jsp";
 			}
-			else {
-				//登录成功 保存用户登录状态
-				request.getSession().setAttribute("admin", admin);
-				
-				//跳转到 index.jsp
-				response.sendRedirect(request.getContextPath()+"/admin/home.jsp");
-			}
+			
+			//登录成功 保存用户登录状态
+			request.getSession().setAttribute("admin", admin);
+			
+			//跳转到 index.jsp
+			response.sendRedirect(request.getContextPath()+"/admin/home.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "用户登录失败");

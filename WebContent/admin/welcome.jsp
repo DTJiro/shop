@@ -25,7 +25,7 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 
 <body>
 
-<form name="Form1" method="post" action="name.aspx" id="Form1">
+<form name="Form1" method="post" action="" id="Form1">
 
 	<table width="100%" border="0" height="88" border="1" background="${pageContext.request.contextPath}/images/back1.JPG">
 		<tr>

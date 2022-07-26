@@ -19,12 +19,25 @@ import com.bamboo.utils.DataSourceUtils;
 
 public class OrderDaoImpl implements OrderDao {
 
+	QueryRunner qr = new QueryRunner();
+	
 	@Override
 	/**
 	 * 保存订单
 	 */
 	public void save(Order o) throws Exception {
-		QueryRunner qr = new QueryRunner();
+		/**
+		 * `oid` varchar(32) NOT NULL,
+			  `ordertime` datetime DEFAULT NULL,
+			  `total` double DEFAULT NULL,
+			  
+			  `state` int(11) DEFAULT NULL,
+			  `address` varchar(30) DEFAULT NULL,
+			  `name` varchar(20) DEFAULT NULL,
+			  
+			  `telephone` varchar(20) DEFAULT NULL,
+			  `uid` varchar(32) DEFAULT NULL,
+		 */
 		String sql = "insert into orders values(?,?,?,?,?,?,?,?)";
 		qr.update(DataSourceUtils.getConnection(), sql, o.getOid(),o.getOrdertime(),o.getTotal(),
 				o.getState(),o.getAddress(),o.getName(),
@@ -36,8 +49,14 @@ public class OrderDaoImpl implements OrderDao {
 	 * 保存订单项
 	 */
 	public void saveItem(OrderItem oi) throws Exception {
-		QueryRunner qr = new QueryRunner();
-
+		/*
+		 * `itemid` varchar(32) NOT NULL,
+				  `count` int(11) DEFAULT NULL,
+				  `subtotal` double DEFAULT NULL,
+				  
+				  `pid` varchar(32) DEFAULT NULL,
+				  `oid` varchar(32) DEFAULT NULL,
+		 */
 		String sql = "insert into orderitem values(?,?,?,?,?)";
 		qr.update(DataSourceUtils.getConnection(), sql, oi.getItemid(),oi.getCount(),oi.getSubtotal(),
 				oi.getProduct().getPid(),oi.getOrder().getOid());
@@ -48,7 +67,6 @@ public class OrderDaoImpl implements OrderDao {
 	 * 获取我的订单的总条数
 	 */
 	public int getTotalRecord(int uid) throws Exception {
-		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql = "select count(*) from orders where uid = ?";
 		return ((Long)qr.query(sql, new ScalarHandler(), uid)).intValue();
 	}
@@ -58,7 +76,6 @@ public class OrderDaoImpl implements OrderDao {
 	 * 获取我的订单 当前页数据
 	 */
 	public List<Order> findMyOrdersByPage(PageBean<Order> pb, int uid) throws Exception {
-		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
 		//查询所有订单(基本信息)
 		String sql="select * from orders where uid = ? order by ordertime desc limit ?,?";
 		List<Order> list = qr.query(sql, new BeanListHandler<>(Order.class), uid,pb.getStartIndex(),pb.getPageSize());
@@ -97,7 +114,6 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	public Order getById(String oid) throws Exception {
 		//1.查询订单基本信息
-		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql ="select * from orders where oid = ?";
 		Order order = qr.query(sql, new BeanHandler<>(Order.class), oid);
 		
@@ -127,8 +143,18 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public void update(Order order) throws Exception {
-		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
-
+		/**
+		 * `oid` varchar(32) NOT NULL,
+			  `ordertime` datetime DEFAULT NULL,
+			  `total` double DEFAULT NULL,
+			  
+			  `state` int(11) DEFAULT NULL,
+			  `address` varchar(30) DEFAULT NULL,
+			  `name` varchar(20) DEFAULT NULL,
+			  
+			  `telephone` varchar(20) DEFAULT NULL,
+			  `uid` varchar(32) DEFAULT NULL,
+		 */
 		String sql="update orders set state = ?,address = ?,name =?,telephone = ? where oid = ?";
 		qr.update(sql,order.getState(),order.getAddress(),order.getName(),
 				order.getTelephone(),order.getOid());
@@ -140,7 +166,6 @@ public class OrderDaoImpl implements OrderDao {
 	 * 后台查询订单列表
 	 */
 	public List<Order> findAllByState(String state) throws Exception {
-		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql = "select * from orders ";
 		
 		//判断state是否为空

@@ -1,13 +1,25 @@
 package com.bamboo.domain;
-
+/**
+ * 订单项
+ * @author Administrator
+ *
+ */
 public class OrderItem {
-
+/*
+ * `itemid` varchar(32) NOT NULL,
+		  `count` int(11) DEFAULT NULL,
+		  `subtotal` double DEFAULT NULL,
+		  `pid` varchar(32) DEFAULT NULL,
+		  `oid` varchar(32) DEFAULT NULL,
+ */
 	private String itemid;
 	private Integer count;
 	private Double subtotal;
 	
+	//表示包含那个商品
 	private  Product product;
-
+	
+	//表示属于那个订单
 	private  Order order;
 
 	public String getItemid() {

@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%-- <%
+		//response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
+		request.getRequestDispatcher("/index").forward(request, response);
+	%> --%>
 	<jsp:forward page="/index"></jsp:forward>
 </body>
 </html>

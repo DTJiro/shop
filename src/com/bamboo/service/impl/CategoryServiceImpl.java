@@ -14,12 +14,13 @@ import redis.clients.jedis.Jedis;
 
 public class CategoryServiceImpl implements CategoryService {
 
+	CategoryDao cd = new CategoryDaoImpl();
+	
 	@Override
 	/**
 	 * 后台展示所有分类
 	 */
 	public List<Category> findList() throws Exception {
-		CategoryDao cd = new CategoryDaoImpl();
 		return cd.findAll();
 	}
 
@@ -29,7 +30,6 @@ public class CategoryServiceImpl implements CategoryService {
 	 */
 	public String findAll() throws Exception {
 		//1.调用dao 查询所有分类
-		CategoryDao cd = new CategoryDaoImpl();
 		List<Category> list = cd.findAll();
 		
 		//2.将list转换成json字符串
@@ -44,6 +44,27 @@ public class CategoryServiceImpl implements CategoryService {
 	 * 从redis中获取所有的分类
 	 */
 	public String findAllFromRedis() throws Exception {
+		/*
+		//1.获取jedis
+		Jedis jedis = JedisUtils.getJedis();
+		
+		//2.从redis中获取数据
+		String value = jedis.get(Constant.STORE_CATEGORY_LIST);
+		
+		//3.判断数据是否为空
+		if(value == null){
+			//3.1若为空 ,调用findAll() 将查询的结果放入redis return
+			value = findAll();
+			
+			jedis.set(Constant.STORE_CATEGORY_LIST, value);
+			System.out.println("从mysql中获取");
+			return value;
+		}
+		//3.2若不为空,return
+		System.out.println("从redis中获取");
+		return value;
+		*/
+		
 		Jedis j =null;
 		String value=null;
 		try {
@@ -91,7 +112,6 @@ public class CategoryServiceImpl implements CategoryService {
 	 */
 	public void save(Category c) throws Exception {
 		//1.调用dao 完成添加
-		CategoryDao cd = new CategoryDaoImpl();
 		cd.save(c);
 		
 		//2.更新redis

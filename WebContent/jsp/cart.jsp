@@ -7,32 +7,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>购物车</title>
-		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/css/style1.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-<link href="${pageContext.request.contextPath}/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-<!-- font-awesome icons -->
-<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<!-- js -->
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.countdown.css" /> <!-- countdown --> 
-<!-- //js -->  
-<!-- web fonts --> 
-<link href='http://fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts -->  
-<!-- start-smooth-scrolling -->
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
+		<title>会员登录</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
+		<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
+		<!-- 引入自定义css文件 style.css -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
 		<style>
 			body {
 				margin-top: 20px;
@@ -61,13 +41,12 @@
 	<body>
 
 		
-			<%@include file="head.jsp" %>
+			<%@include file="/jsp/head.jsp" %>
 
 		<div class="container">
 			<div class="row">
 				<c:if test="${empty cart || empty cart.cartItems }">
-				<br/>
-					<h3>亲，您的购物车里还没有商品哦~请先去添加一些吧~~~~~~</h3>
+					<h3>购物车空空如也,请先去逛逛吧~~~~~~~~~~~</h3>
 				</c:if>
 				<c:if test="${not empty cart.cartItems}">
 				<div style="margin:0 auto; margin-top:10px;width:950px;">
@@ -125,6 +104,13 @@
 			</c:if>
 		</div>
 
+		<div style="margin-top:50px;">
+			<img src="${pageContext.request.contextPath}/image/footer.jpg" width="100%" alt="我们的优势" title="我们的优势" />
+		</div>
+
+		<div style="text-align: center;margin-top: 5px;margin-bottom:20px;">
+			Copyright &copy; DT 版权所有
+		</div>
 
 	</body>
 	<script type="text/javascript">

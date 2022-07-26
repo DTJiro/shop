@@ -33,11 +33,11 @@ public class AdminCategoryServlet extends BaseServlet {
 			Category c = new Category();
 			c.setCid(UUIDUtils.getId());
 			c.setCname(request.getParameter("cname"));
-
+			
 			//2.调用service完成添加操作
 			CategoryService cs =new CategoryServiceImpl();
 			cs.save(c);
-
+			
 			//3.重定向
 			response.sendRedirect(request.getContextPath()+"/adminCategory?method=findAll");
 		} catch (Exception e) {

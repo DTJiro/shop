@@ -1,10 +1,17 @@
 package com.bamboo.domain;
-
+/**
+ * 购物项
+ * @author Administrator
+ *
+ */
 public class CartItem {
+	//商品
 	private Product product;
-
+	
+	//小计
 	private Double subtotal;
-
+	
+	//数量
 	private Integer count;
 
 	public Product getProduct() {
@@ -15,10 +22,17 @@ public class CartItem {
 		this.product = product;
 	}
 
+	/**
+	 * 获取商品小计
+	 * @return
+	 */
 	public Double getSubtotal() {
 		return product.getShop_price()*count;
 	}
 
+	/*public void setSubtotal(Double subtotal) {
+		this.subtotal = subtotal;
+	}*/
 
 	public Integer getCount() {
 		return count;

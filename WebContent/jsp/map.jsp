@@ -15,12 +15,13 @@
 </head>
 <body>
 	<div id="l-map"></div>
-	<div><a href="${pageContext.request.contextPath }/jsp/navi.jsp">线路规划</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }">返回</a></div>
+	<div><a href="navi.jsp">线路规划</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }">返回</a></div>
 	<div id="r-result"></div>
 </body>
 </html>
 <script type="text/javascript">
-	var map = new BMap.Map("l-map");           
+	// 百度地图API功能
+	var map = new BMap.Map("l-map");            // 创建Map实例
 	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
 	var local = new BMap.LocalSearch(map, {
 		renderOptions: {map: map, panel: "r-result"}
